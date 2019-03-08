@@ -1,17 +1,27 @@
+const next = require('next');
 const express = require('express');
-const path = require('path');
-const compress = require('compression');
+const url = require('url');
+const { port, env } = require('./../config');
+const router = require('./router');
 
-const app = express();
-app.use(compress());
-app.use(express.static(path.resolve(__dirname)));
-
-const port = process.env.PORT || 3000;
-
-app.use('/', (req, res) => {
-  res.sendFile(path.resolve(__dirname, 'index.html'));
+const app = next({
+  dev: env !== 'production',
+  dir: './src',
 });
 
-app.listen(port, () => {
-  console.info(`Listening on port ${port}`);
+const handle = router.getRequestHandler(app);
+
+app.prepare().then(() => {
+  const server = express();
+
+  server
+    .use((req, res) => {
+      const parsedUrl = url.parse(req.url, true);
+      handle(req, res, parsedUrl);
+    })
+    .listen(port, (err) => {
+      if (err) throw err;
+
+      console.info(`[${env}] Server running on http://localhost:${port}`);
+    });
 });

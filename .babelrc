@@ -1,8 +1,31 @@
 {
-  "presets": ["@babel/preset-env", "@babel/preset-react"],
+  "presets": [
+    "next/babel"
+  ],
   "plugins": [
     "lodash",
-    "babel-plugin-styled-components",
+    ["babel-plugin-styled-components", {
+        "ssr": true,
+        "preprocess": false
+    }],
+    ["module-resolver", {
+      "root": ["./"],
+      "alias": {
+        "app": "./src",
+        "client": "./client",
+        "common": "./src/components/common",
+        "config": "./config",
+        "ducks": "./src/ducks",
+        "images": "./src/static/images",
+        "modules": "./src/components/modules",
+        "pages": "./src/pages",
+        "router": "./server/router.js",
+        "server": "./server",
+        "services": "./src/services",
+        "styles": "./src/styles",
+        "vectors": "./src/static/vectors"
+      }
+    }],
     "@babel/plugin-syntax-dynamic-import",
     "@babel/plugin-proposal-class-properties",
     "@babel/plugin-proposal-export-default-from",
