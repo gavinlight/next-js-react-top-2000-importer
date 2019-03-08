@@ -1,7 +1,7 @@
 const next = require('next');
 const express = require('express');
 const url = require('url');
-const { port, env } = require('./../../config');
+const { port, env } = require('./../config');
 const router = require('./router');
 
 const app = next({

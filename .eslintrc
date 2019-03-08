@@ -2,7 +2,7 @@
   "extends": "react-app",
   "settings": {
     "import/resolver": {
-      "webpack": { "config": "config/webpack.config.base.js" }
+      "babel-module": {}
     },
     "react": {
       "version": "latest"
@@ -49,6 +49,7 @@
       "asyncArrow": "always"
     }],
     "space-in-parens": ["error", "never"],
-    "space-infix-ops": "error"
+    "space-infix-ops": "error",
+    "eol-last": ["error", "always"]
   }
 }
