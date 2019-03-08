@@ -1,6 +1,3 @@
-/**
- * This is an example file from react-prime
- */
 import createAction from 'services/createAction';
 
 const GET_DATA = 'data/GET';

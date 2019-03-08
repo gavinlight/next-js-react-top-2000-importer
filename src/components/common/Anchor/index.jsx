@@ -8,7 +8,7 @@ const Anchor = styled.a.attrs(({ href }) => ({
 }))`
   color: ${(props) => props.theme.black};
   text-decoration: none;
-  border-bottom: 2px solid ${(props) => props.theme.prime};
+  border-bottom: 2px solid ${(props) => props.theme.black};
 `;
 
 Anchor.propTypes = {
