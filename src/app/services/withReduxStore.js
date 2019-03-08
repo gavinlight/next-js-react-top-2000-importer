@@ -1,6 +1,6 @@
 /* eslint-disable no-underscore-dangle */
 import React from 'react';
-import initializeStore from 'src/store';
+import initializeStore from 'app/store';
 import isServer from 'services/isServer';
 
 // const isServer = typeof window === 'undefined';
